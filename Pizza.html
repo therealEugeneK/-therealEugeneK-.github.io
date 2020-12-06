@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pizza</title>
+		<link rel = "stylesheet" type = "text/css" href = "food_design.css" />
+		<style>
+		
+			body
+			{
+				
+				text-align: center;
+				background-image: url("lw_Background.jpg");
+				background-color: #fffcf9;
+				background-size: 100%;
+				
+			}
+			
+			.category
+			{
+			
+				border: 10px double gray;
+				margin: 10px;
+				display: inline-block;
+				width: 28%;
+				vertical-align: top;
+				padding: 5px;
+				background-color: rgba(255,255,255,0.80);
+			
+			}
+			
+			
+			
+			
+		</style>
+		<script>
+		
+			function initialize()
+			{		
+				
+				totalM = 0;
+				totalC = 0;
+				
+				dollars = document.getElementById("dollars");
+				calories = document.getElementById("calories");
+				
+				dollars.innerHTML = "Dollars: $0.00";
+				calories.innerHTML = "Calories: 0 calories";
+				
+				typeChosen = document.getElementById("typechosen");
+				shapeChosen = document.getElementById("shapechosen");
+				toppingChosen1 = document.getElementById("toppingchosen1");
+				toppingChosen2 = document.getElementById("toppingchosen2");
+				toppingChosen3 = document.getElementById("toppingchosen3");
+				
+				typeChosen.innerHTML = "";
+				shapeChosen.innerHTML = "";
+				toppingChosen1.innerHTML = "";
+				toppingChosen2.innerHTML = "";
+				toppingChosen3.innerHTML = "";
+				
+				garlic = 0;
+				onions = 0;
+				pepperoni = 0;
+			
+			}
+			
+			
+			function countMoney(amount)
+			{
+			
+				totalM += amount;
+				
+				dollars.innerHTML = "Dollars: $" + totalM;
+			
+			}
+			
+			function countCalories(amount)
+			{
+			
+				totalC += amount;
+				
+				calories.innerHTML = "Calories: " + totalC;
+			
+			}
+
+			
+			function selectPizzaColor(pizzaType) 
+			{
+			
+				document.getElementById("white").disabled = true;
+				document.getElementById("red").disabled = true;
+				
+			}
+			
+			function tellType(userPick)
+			{
+				typeChosen.innerHTML = "You have picked " + userPick;
+			}
+			
+			
+			function selectPizzaShape(pizzaType) 
+			{
+			
+				document.getElementById("triangle").disabled = true;
+				document.getElementById("square").disabled = true;
+
+			}
+			
+			function tellShape(userPick)
+			{
+				shapeChosen.innerHTML = "You have picked " + userPick;
+			}
+			
+			
+			function pizzaToppings(topping)
+			{
+			
+				document.getElementById(topping).disabled = true;
+			
+			}
+			
+			function tellToppings(userPick) 
+			{
+				
+				if (document.getElementById("garlic").disabled == true && garlic == 0)
+				{
+					toppingChosen1.innerHTML = "You have picked " + userPick;
+					garlic = 1;
+				}
+				
+				if (document.getElementById("onions").disabled == true && onions == 0)
+				{
+					toppingChosen2.innerHTML = "You have picked " + userPick;
+					onions = 1;
+				}
+				
+				if (document.getElementById("pepperoni").disabled == true && pepperoni == 0)
+				{
+					toppingChosen3.innerHTML = "You have picked " + userPick;
+					pepperoni = 1;					
+				}	
+
+			}
+
+			
+			
+			function resetAllPizzas()
+			{
+			
+				document.getElementById("white").disabled = false;
+				document.getElementById("red").disabled = false;
+				document.getElementById("triangle").disabled = false;
+				document.getElementById("square").disabled = false;
+				
+				document.getElementById("garlic").disabled = false;
+				document.getElementById("onions").disabled = false;
+				document.getElementById("pepperoni").disabled = false;
+				
+				initialize();
+				
+			}
+		
+		</script>
+	</head>
+	
+	
+	
+	<body onload = "initialize();">
+		
+		<h1>Pizzeria</h1>
+		
+		<div class = "category" id = "type">
+			<h2>Type (Pick 1)</h2>
+			<p><button id = "red" onclick = "countMoney(1);countCalories(80);selectPizzaColor('red');tellType('a red pizza');">Red</button> $1.00 / 80 Calories</p>
+			<p><button id = "white" onclick = "countMoney(1.25);countCalories(100);selectPizzaColor('white');tellType('a white pizza');">White</button> $1.25 / 100 Calories</p>
+			<p id = "typechosen" class = "userUpdate"></p>
+		</div>
+			
+		<div class = "category" id = "shape">
+			<h2>Shape (Pick 1)</h2>
+			<p><button id = "triangle" onclick = "countMoney(1);countCalories(200);selectPizzaShape('triangle');tellShape('a triangle pizza');">Triangle</button> $1.00 / 200 Calories</p>
+			<p><button id = "square" onclick = "countMoney(1.25);countCalories(175);selectPizzaShape('square');tellShape('a square pizza');">Square</button> $1.25 / 175 Calories</p>
+			<p id = "shapechosen" class = "userUpdate"></p>
+		</div>
+		
+		<div class = "category" id = "toppings">
+			<h2>Toppings</h2>
+			<p><button id = "garlic" onclick = "countMoney(.5);countCalories(25);pizzaToppings('garlic');tellToppings('garlic');">Garlic</button> $0.50 / 25 Calories</p>
+			<p><button id = "onions" onclick = "countMoney(.5);countCalories(25);pizzaToppings('onions');tellToppings('onions');">Onions</button> $0.50 / 25 Calories</p>
+			<p><button id = "pepperoni" onclick = "countMoney(.75);countCalories(50);pizzaToppings('pepperoni');tellToppings('pepperoni');">Pepperoni</button> $0.75 / 50 Calories</p>
+			<p id = "toppingchosen1" class = "userUpdate"></p>
+			<p id = "toppingchosen2" class = "userUpdate"></p>
+			<p id = "toppingchosen3" class = "userUpdate"></p>
+		</div>
+		
+		<h3 id = "dollars">Dollars:</h3>
+		
+		<h3 id = "calories">Calories:</h3>
+		
+		<button onclick = "resetAllPizzas();">Reset</button>
+		
+		<p>
+		
+		<a href = "Build Your Food v2.html">Home</a>
+	
+	</body>
+</html>

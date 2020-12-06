@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ice Cream</title>
+		<link rel = "stylesheet" type = "text/css" href = "food_design.css" />
+		<style>
+			
+			body
+			{
+				
+				text-align: center;
+				background-image: url("lw_Background.jpg");
+				background-color: #fffcf9;
+				background-size: 100%;
+				
+			}
+			
+			.category
+			{
+			
+				border: 10px double gray;
+				margin: 10px;
+				display: inline-block;
+				width: 28%;
+				vertical-align: top;
+				padding: 5px;
+				background-color: rgba(255,255,255,0.80);
+			
+			}
+			
+		</style>
+		<script>
+		
+			function initialize()
+			{		
+				
+				totalM = 0;
+				totalC = 0;
+				
+				dollars = document.getElementById("dollars");
+				calories = document.getElementById("calories");
+				
+				dollars.innerHTML = "Dollars: $0.00";
+				calories.innerHTML = "Calories: 0 calories";
+				
+				typeChosen = document.getElementById("typechosen");
+				flavorChosen1 = document.getElementById("flavorchosen1");
+				flavorChosen2 = document.getElementById("flavorchosen2");
+				flavorChosen3 = document.getElementById("flavorchosen3");
+				toppingChosen1 = document.getElementById("toppingchosen1");
+				toppingChosen2 = document.getElementById("toppingchosen2");
+				toppingChosen3 = document.getElementById("toppingchosen3");
+				
+				typeChosen.innerHTML = "";
+				flavorChosen1.innerHTML = "";
+				flavorChosen2.innerHTML = "";
+				flavorChosen3.innerHTML = "";
+				toppingChosen1.innerHTML = "";
+				toppingChosen2.innerHTML = "";
+				toppingChosen3.innerHTML = "";
+				
+				vanilla = 0;
+				chocolate = 0;
+				strawberry = 0;
+				
+				sprinkles = 0;
+				oreos = 0;
+				gummyBears = 0;
+				caramel = 0;
+			
+			}
+			
+			
+			function countMoney(amount)
+			{
+			
+				totalM += amount;
+				
+				dollars.innerHTML = "Dollars: $" + totalM;
+			
+			}
+			
+			function countCalories(amount)
+			{
+			
+				totalC += amount;
+				
+				calories.innerHTML = "Calories: " + totalC;
+			
+			}
+
+			
+			function selectContainer() 
+			{
+			
+				document.getElementById("cup").disabled = true;
+				document.getElementById("cone").disabled = true;
+				
+			}
+			
+			function tellType(userPick)
+			{
+				typeChosen.innerHTML = "You have picked " + userPick;
+			}
+			
+			
+			function selectFlavor(flavor) 
+			{
+			
+				document.getElementById(flavor).disabled = true;
+
+			}
+			
+			function tellFlavor(userPick)
+			{
+			
+				if (document.getElementById("vanilla").disabled == true && vanilla == 0)
+				{
+					flavorChosen1.innerHTML = "You have picked " + userPick;
+					vanilla = 1;
+				}
+				
+				if (document.getElementById("chocolate").disabled == true && chocolate == 0)
+				{
+					flavorChosen2.innerHTML = "You have picked " + userPick;
+					chocolate = 1;
+				}
+				
+				if (document.getElementById("strawberry").disabled == true && strawberry == 0)
+				{
+					flavorChosen3.innerHTML = "You have picked " + userPick;
+					strawberry = 1;					
+				}	
+				
+			}
+			
+			
+			function iceCreamTopping(topping)
+			{
+			
+				document.getElementById(topping).disabled = true;
+			
+			}
+			
+			function tellTopping(userPick) 
+			{
+				
+				if (document.getElementById("sprinkles").disabled == true && sprinkles == 0)
+				{
+					toppingchosen1.innerHTML = "You have picked " + userPick;
+					sprinkles = 1;
+				}
+				
+				if (document.getElementById("oreos").disabled == true && oreos == 0)
+				{
+					toppingchosen2.innerHTML = "You have picked " + userPick;
+					oreos = 1;
+				}
+				
+				if (document.getElementById("gummy bears").disabled == true && gummyBears == 0)
+				{
+					toppingchosen3.innerHTML = "You have picked " + userPick;
+					gummyBears = 1;					
+				}
+
+				if (document.getElementById("caramel").disabled == true && caramel == 0)
+				{
+					toppingchosen4.innerHTML = "You have picked " + userPick;
+					caramel = 1;
+				}
+
+			}
+
+			
+			
+			function resetAllBurgers()
+			{
+			
+				document.getElementById("cup").disabled = false;
+				document.getElementById("cone").disabled = false;
+				document.getElementById("vanilla").disabled = false;
+				document.getElementById("chocolate").disabled = false;
+				document.getElementById("strawberry").disabled = false;
+				document.getElementById("sprinkles").disabled = false;
+				document.getElementById("oreos").disabled = false;
+				document.getElementById("gummy bears").disabled = false;
+				document.getElementById("caramel").disabled = false;
+				
+				initialize();
+				
+			}
+		
+		</script>
+	</head>
+	
+	
+	
+	<body onload = "initialize();">
+		<h1>Ice Cream Shop</h1>
+		
+		<div class = "category">
+			<h2>Container (Pick 1)</h2>
+			<p><button id = "cone" onclick = "countMoney(1);countCalories(80);selectContainer('cone');tellType('a cone');">Cone</button> $1.00 / 80 Calories</p>
+			<p><button id = "cup" onclick = "countMoney(1.25);countCalories(100);selectContainer('cup');tellType('a cup');">Cup</button> $1.25 / 100 Calories</p>
+			<p id = "typechosen" class = "userUpdate"></p>
+		</div>
+			
+		<div class = "category">
+			<h2>Flavors</h2>
+			<p><button id = "vanilla" onclick = "countMoney(1);countCalories(200);selectFlavor('vanilla');tellFlavor('vanilla');">Vanilla</button> $1.00 / 200 Calories</p>
+			<p><button id = "chocolate" onclick = "countMoney(1.25);countCalories(175);selectFlavor('chocolate');tellFlavor('chocolate');">Chocolate</button> $1.25 / 175 Calories</p>
+			<p><button id = "strawberry" onclick = "countMoney(1.25);countCalories(175);selectFlavor('strawberry');tellFlavor('strawberry');">Strawberry</button> $1.25 / 175 Calories</p>
+			<p id = "flavorchosen1" class = "userUpdate"></p>
+			<p id = "flavorchosen2" class = "userUpdate"></p>
+			<p id = "flavorchosen3" class = "userUpdate"></p>
+		</div>
+		
+		<div class = "category">
+			<h2>Toppings</h2>
+			<p><button id = "sprinkles" onclick = "countMoney(.5);countCalories(25);iceCreamTopping('sprinkles');tellTopping('sprinkles');">Sprinkles</button> $0.50 / 25 Calories</p>
+			<p><button id = "oreos" onclick = "countMoney(.5);countCalories(25);iceCreamTopping('oreos');tellTopping('oreos');">Oreos</button> $0.50 / 25 Calories</p>
+			<p><button id = "gummy bears" onclick = "countMoney(.75);countCalories(50);iceCreamTopping('gummy bears');tellTopping('gummy bears');">Gummy Bears</button> $0.75 / 50 Calories</p>
+			<p><button id = "caramel" onclick = "countMoney(.75);countCalories(50);iceCreamTopping('caramel');tellTopping('caramel');">Caramel</button> $0.75 / 50 Calories</p>
+			<p id = "toppingchosen1" class = "userUpdate"></p>
+			<p id = "toppingchosen2" class = "userUpdate"></p>
+			<p id = "toppingchosen3" class = "userUpdate"></p>
+			<p id = "toppingchosen4" class = "userUpdate"></p>
+		</div>
+
+		
+		<h3 id = "dollars">Dollars:</h3>
+		
+		<h3 id = "calories">Calories:</h3>
+		
+		<button onclick = "resetAllBurgers();">Reset</button>
+		
+		<p>
+		
+		<a href = "Build Your Food v2.html">Home</a>
+	
+	
+	</body>
+</html>

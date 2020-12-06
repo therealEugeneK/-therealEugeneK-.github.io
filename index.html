@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<style>
+		
+			body
+			{
+			
+				text-align: center;
+				background-image: url("lw_Background.jpg");
+				background-color: #fffcf9;
+				background-size: 100%;				
+			
+			}
+			
+			.category
+			{
+			
+				border: 10px double gray;
+				margin: 10px;
+				display: inline-block;
+				width: 28%;
+				vertical-align: top;
+				padding: 5px;
+				
+			}
+			
+
+			
+			#pizza
+			{
+				background-image: url("pizza.png");
+				background-size: 250px;
+				background-repeat: no-repeat;
+				background-position: right top;
+				background-color: rgba(255,255,255,0.80);
+			}
+			
+			#burger
+			{
+				background-image: url("burger.png");
+				background-size: 300px;
+				background-repeat: no-repeat;
+				background-position: left top;
+				background-color: rgba(255,255,255,0.80);
+			}
+			
+			#icecream
+			{
+				background-image: url("cone.png");
+				background-size: 190px;
+				background-repeat: no-repeat;
+				background-position: left top;
+				background-color: rgba(255,255,255,0.80);
+			}
+			
+			#help
+			{
+				font: 24pt arial;
+				font-style: italic;
+				color: darkred;
+			}
+			
+			#randomfooddisplay
+			{
+				font: 20pt arial;
+				color: red;
+			}
+			
+			
+			button
+			{
+				font: 20pt arial;
+				color: darkred;
+			}
+			
+			p
+			{
+			
+				font-size: 30pt;
+				margin: 50px;
+			
+			}
+			
+			a
+			{
+			
+				font-size: 30pt;
+				text-decoration: none;
+				color: purple;
+			}
+			
+			h1
+			{
+				font: 30pt goudy stout;
+				color: darkred;
+			}
+			
+			h2
+			{
+				padding: 25px;
+				font-style: italic;
+			}
+			
+		</style>
+		<script>
+		
+			function initialize()
+			{
+			
+				pizza = 1;
+				burger = 2;
+				iceCream = 3;
+				
+				randomFoodDisplay = document.getElementById("randomfooddisplay");
+			
+			}
+			
+			function randomFood()
+			{
+			
+				foodSelection = parseInt(Math.random() * 3) + 1;
+				
+				if (foodSelection == 1)
+				{
+					randomFoodDisplay.innerHTML = "I suggest you customize the pizza.";
+				}
+				
+				else if (foodSelection == 2)
+				{
+					randomFoodDisplay.innerHTML = "I suggest you customize the burger.";
+				}
+				
+				else if (foodSelection == 3)
+				{
+					randomFoodDisplay.innerHTML = "I suggest you customize the ice cream.";
+				}
+			
+			}
+			
+		</script>
+	</head>
+	
+	
+	
+	<body onload = "initialize();">
+		
+		<h1>Pick Which Food You Want To Customize</h1>
+			
+		<div class = "category" id = "pizza">
+			<a href = "Pizza.html">
+				<h2>Pizza &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </h2>				
+<!--						
+				<img src = "pizzaImg.png" />							
+-->						
+				<p>-Choose between red and white pizza.</p>
+				<p>-Choose between the shapes of the pizza.</p>
+				<p>-Choose the toppings on the pizza.</p>		
+			</a>	
+		</div>
+			
+			
+		<div class = "category"  id = "burger">
+			<a href = "burger.html">
+				<h2> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Burger</h2>				
+<!--					
+				<img src = "sushiImg.jpg" />			
+-->				
+				<p>-Choose between a ham or cheese burger.</p>
+				<p>-Choose the ingredients inside the burger.</p>
+				<p>-Choose the sauce inside the burger.</p>
+			</a>
+		</div>
+			
+			
+		<div class = "category" id = "icecream">
+			<a href = "Ice Cream.html">
+				<h2> &nbsp;&nbsp;&nbsp;&nbsp Ice Cream</h2>						
+<!--					
+				<img src = "iceCreamImg.jpg" />				
+-->				
+				<p>-Choose between a cup or a cone.</p>
+				<p>-Choose the flavor of the ice cream.</p>
+				<p>-Choose the toppings on top of the ice cream.</p>
+			</a>
+		</div>
+		
+		<p>
+		
+		<div id = "help">
+			Need help choosing a food to customize? Click this: <button onclick = "randomFood();">Random Food Generator</button> 
+			<div id = "randomfooddisplay"></div>
+		</div>
+			
+	</body>
+</html>

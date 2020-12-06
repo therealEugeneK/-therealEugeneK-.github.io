@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Burger</title>
+		<link rel = "stylesheet" type = "text/css" href = "food_design.css" />
+		<style>
+			
+			body
+			{
+				
+				text-align: center;
+				background-image: url("lw_Background.jpg");
+				background-color: #fffcf9;
+				background-size: 100%;
+				
+			}
+			
+			.category
+			{
+			
+				border: 10px double gray;
+				margin: 10px;
+				display: inline-block;
+				width: 28%;
+				vertical-align: top;
+				padding: 5px;
+				background-color: rgba(255,255,255,0.80);
+			
+			}
+			
+		</style>
+		<script>
+		
+			function initialize()
+			{		
+				
+				totalM = 0;
+				totalC = 0;
+				
+				dollars = document.getElementById("dollars");
+				calories = document.getElementById("calories");
+				
+				dollars.innerHTML = "Dollars: $0.00";
+				calories.innerHTML = "Calories: 0 calories";
+				
+				typeChosen = document.getElementById("typechosen");
+				ingredientChosen1 = document.getElementById("ingredientchosen1");
+				ingredientChosen2 = document.getElementById("ingredientchosen2");
+				ingredientChosen3 = document.getElementById("ingredientchosen3");
+				saucechosen1 = document.getElementById("saucechosen1");
+				saucechosen2 = document.getElementById("saucechosen2");
+				saucechosen3 = document.getElementById("saucechosen3");
+				
+				typeChosen.innerHTML = "";
+				ingredientChosen1.innerHTML = "";
+				ingredientChosen2.innerHTML = "";
+				ingredientChosen3.innerHTML = "";
+				saucechosen1.innerHTML = "";
+				saucechosen2.innerHTML = "";
+				saucechosen3.innerHTML = "";
+				
+				lettuce = 0;
+				tomatoes = 0;
+				pickles = 0;
+				
+				ketchup = 0;
+				mustard = 0;
+				mayo = 0;
+			
+			}
+			
+			
+			function countMoney(amount)
+			{
+			
+				totalM += amount;
+				
+				dollars.innerHTML = "Dollars: $" + totalM;
+			
+			}
+			
+			function countCalories(amount)
+			{
+			
+				totalC += amount;
+				
+				calories.innerHTML = "Calories: " + totalC;
+			
+			}
+
+			
+			function selectBurgerColor(burgerType) 
+			{
+			
+				document.getElementById("cheese").disabled = true;
+				document.getElementById("ham").disabled = true;
+				
+			}
+			
+			function tellType(userPick)
+			{
+				typeChosen.innerHTML = "You have picked " + userPick;
+			}
+			
+			
+			function selectBurgerIngredient(ingredient) 
+			{
+			
+				document.getElementById(ingredient).disabled = true;
+
+			}
+			
+			function tellIngredient(userPick)
+			{
+			
+				if (document.getElementById("lettuce").disabled == true && lettuce == 0)
+				{
+					ingredientChosen1.innerHTML = "You have picked " + userPick;
+					lettuce = 1;
+				}
+				
+				if (document.getElementById("tomatoes").disabled == true && tomatoes == 0)
+				{
+					ingredientChosen2.innerHTML = "You have picked " + userPick;
+					tomatoes = 1;
+				}
+				
+				if (document.getElementById("pickles").disabled == true && pickles == 0)
+				{
+					ingredientChosen3.innerHTML = "You have picked " + userPick;
+					pickles = 1;					
+				}	
+				
+			}
+			
+			
+			function burgerSauce(sauce)
+			{
+			
+				document.getElementById(sauce).disabled = true;
+			
+			}
+			
+			function tellSauce(userPick) 
+			{
+				
+				if (document.getElementById("ketchup").disabled == true && ketchup == 0)
+				{
+					saucechosen1.innerHTML = "You have picked " + userPick;
+					ketchup = 1;
+				}
+				
+				if (document.getElementById("mustard").disabled == true && mustard == 0)
+				{
+					saucechosen2.innerHTML = "You have picked " + userPick;
+					mustard = 1;
+				}
+				
+				if (document.getElementById("mayo").disabled == true && mayo == 0)
+				{
+					saucechosen3.innerHTML = "You have picked " + userPick;
+					mayo = 1;					
+				}	
+
+			}
+
+			
+			
+			function resetAllBurgers()
+			{
+			
+				document.getElementById("cheese").disabled = false;
+				document.getElementById("ham").disabled = false;
+				document.getElementById("lettuce").disabled = false;
+				document.getElementById("tomatoes").disabled = false;
+				document.getElementById("pickles").disabled = false;
+				document.getElementById("ketchup").disabled = false;
+				document.getElementById("mustard").disabled = false;
+				document.getElementById("mayo").disabled = false;
+				
+				initialize();
+				
+			}
+		
+		</script>
+	</head>
+	
+	
+	
+	<body onload = "initialize();">
+		<h1>Burger Restaurant</h1>
+		
+		<div class = "category">
+			<h2>Type (Pick 1)</h2>
+			<p><button id = "ham" onclick = "countMoney(4);countCalories(250);selectBurgerColor('ham');tellType('a hamburger');">Ham</button> $4.00 / 250 Calories</p>
+			<p><button id = "cheese" onclick = "countMoney(4.5);countCalories(380);selectBurgerColor('cheese');tellType('a cheeseburger');">Cheese</button> $4.50 / 380 Calories</p>
+			<p id = "typechosen" class = "userUpdate"></p>
+		</div>
+			
+		<div class = "category">
+			<h2>Ingredients</h2>
+			<p><button id = "lettuce" onclick = "countMoney(.5);countCalories(10);selectBurgerIngredient('lettuce');tellIngredient('lettuce');">Lettuce</button> $0.50 / 10 Calories</p>
+			<p><button id = "tomatoes" onclick = "countMoney(.5);countCalories(20);selectBurgerIngredient('tomatoes');tellIngredient('tomatoes');">Tomatoes</button> $0.50 / 20 Calories</p>
+			<p><button id = "pickles" onclick = "countMoney(.5);countCalories(10);selectBurgerIngredient('pickles');tellIngredient('pickles');">Pickles</button> $0.50 / 10 Calories</p>
+			<p id = "ingredientchosen1" class = "userUpdate"></p>
+			<p id = "ingredientchosen2" class = "userUpdate"></p>
+			<p id = "ingredientchosen3" class = "userUpdate"></p>
+		</div>
+		
+		<div class = "category">
+			<h2>Sauce</h2>
+			<p><button id = "ketchup" onclick = "countMoney(.25);countCalories(20);burgerSauce('ketchup');tellSauce('ketchup');">Ketchup</button> $0.25 / 20 Calories</p>
+			<p><button id = "mustard" onclick = "countMoney(.25);countCalories(5);burgerSauce('mustard');tellSauce('mustard');">Mustard</button> $0.25 / 5 Calories</p>
+			<p><button id = "mayo" onclick = "countMoney(.25);countCalories(100);burgerSauce('mayo');tellSauce('mayonnaise');">Mayonnaise</button> $0.25 / 100 Calories</p>
+			<p id = "saucechosen1" class = "userUpdate"></p>
+			<p id = "saucechosen2" class = "userUpdate"></p>
+			<p id = "saucechosen3" class = "userUpdate"></p>
+		</div>
+
+		
+		<h3 id = "dollars">Dollars:</h3>
+		
+		<h3 id = "calories">Calories:</h3>
+		
+		<button onclick = "resetAllBurgers();">Reset</button>
+		
+		<p>
+		
+		<a href = "Build Your Food v2.html">Home</a>
+	
+	
+	</body>
+</html>
