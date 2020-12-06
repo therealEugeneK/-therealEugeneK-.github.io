@@ -1,1 +1,1 @@
-# Lab7
+# This is a simple calorie and price calcualtor application. It is presented via a menu that the user can interact with. The user has the ability to customize up to 3 foods which include pizza, burger, or ice cream. Each item comes with their own unique combinations. Once the user finishes building his or her entree, the total calories and price for the dish are displayed at the bottom of the page.
